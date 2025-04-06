@@ -191,7 +191,7 @@ window.addEventListener("DOMContentLoaded", () => {
     detailPage.style.display = "block";
 
     detailTitleName.innerHTML = `
-       <h2>${account.name}' Profile</h2>      
+       <h2>${account.name} Profile</h2>      
     `;
 
     sliderContainer.innerHTML = `
@@ -222,9 +222,10 @@ window.addEventListener("DOMContentLoaded", () => {
                   .slice(1)
                   .map(
                     (photo, index) =>
-                      `<div class="grid-photo">
+                      `<div class="grid-photo hideGridPhoto">
                     <img src="${photo}" alt="Gallery ${index + 1}" >
-                      </div>`
+                      </div>
+                    `
                   )
                   .join("")}
                   <div id = "myModal" class = "modal" >  
@@ -242,7 +243,7 @@ window.addEventListener("DOMContentLoaded", () => {
             <div class="button-pulse-2">
                 <div class="button__wrapper-2">
                 <div class="pulsing-2"></div>
-                <a href="https://t.me/${account.username}" class="chat-button-2"><span>💬 Flirt in Telegram</span></a>
+                <a href="https://t.me/${account.username}" class="chat-button-2"><span>💬 Flirt in Telegram</span> </a>
                 </div>             
             </div>
     `;
@@ -258,9 +259,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     imagesPersonalList.forEach((item) => {
       item.addEventListener("click", () => {
+        console.log(item.firstElementChild);
         modal.style.display = "block";
-        modalImg.src = item.src;
-        modalImg.alt = item.alt;
+        modalImg.src = item.firstElementChild.src;
+        modalImg.alt = item.firstElementChild.alt;
       });
     });
 

@@ -14,7 +14,7 @@ body {
   background-color: #93c4cf;
   background-color: transparent;
   color: #333;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
   /* padding: 16px; */
   overflow-x: hidden;
 }
@@ -112,7 +112,7 @@ body {
 }
 
 .header__container {
-  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
+  /* font-family: "Helvetica NeueUI", sans-serif; */
   display: flex;
   align-items: center;
   background-color: #bf9cd8;
@@ -136,13 +136,13 @@ body {
 }
 
 .header h1 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
   font-size: 28px;
   margin-bottom: 4px;
 }
 
 .subtitle {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
   font-size: 18px;
   font-weight: 500;
   color: #715555;
@@ -186,11 +186,11 @@ body {
   font-size: 22px;
   font-weight: 600;
   position: relative;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .banner-title h2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .banner-title__icon {
@@ -206,14 +206,14 @@ body {
   font-size: 14px;
   color: #eae2e2;
   margin-bottom: 4px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .banner-desc {
   font-size: 14px;
   line-height: 1.4;
   color: #444;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 /* Profile Detail */
@@ -265,7 +265,7 @@ body {
   position: absolute;
   top: 50%;
   left: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 /* .photo-slider { margin: 10px 0; } */
@@ -293,11 +293,11 @@ body {
   position: absolute;
   top: 320px;
   color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .detail-title h2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .detail-title-name {
@@ -306,11 +306,11 @@ body {
   font-weight: bold;
   margin-bottom: 4px;
   color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .detail-title-name h2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .detail-title__icon {
@@ -327,7 +327,7 @@ body {
   font-size: 18px;
   color: #715555;
   margin-bottom: 5px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .detail-desc {
@@ -335,7 +335,7 @@ body {
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .chat-button {
@@ -353,7 +353,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background 0.2s;
   margin-bottom: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .chat-button-2 {
@@ -373,7 +373,7 @@ body {
   cursor: pointer;
   position: relative;
   transition: 0.2s ease-in-out;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Helvetica NeueUI", sans-serif;
 }
 
 .chat-button:hover {
@@ -480,7 +480,7 @@ body {
   span {
     display: block;
     margin-bottom: 2px;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: "Helvetica NeueUI", sans-serif;
   }
   a {
     background: #ee1dba;
