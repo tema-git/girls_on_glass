@@ -8,48 +8,58 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="bouncing-blobs-container">
-      <div class="bouncing-blobs-glass"></div>
-      <div class="bouncing-blobs">
-        <div class="bouncing-blob bouncing-blob--blue"></div>
-        <div class="bouncing-blob bouncing-blob--blue"></div>
-        <div class="bouncing-blob bouncing-blob--blue"></div>
-        <div class="bouncing-blob bouncing-blob--white"></div>
-        <div class="bouncing-blob bouncing-blob--purple"></div>
-        <div class="bouncing-blob bouncing-blob--purple"></div>
-        <div class="bouncing-blob bouncing-blob--pink"></div>
+    <div class="wrapper">
+      <div class="bouncing-blobs-container">
+        <div class="bouncing-blobs-glass"></div>
+        <div class="bouncing-blobs">
+          <div class="bouncing-blob bouncing-blob--blue"></div>
+          <div class="bouncing-blob bouncing-blob--blue"></div>
+          <div class="bouncing-blob bouncing-blob--blue"></div>
+          <div class="bouncing-blob bouncing-blob--white"></div>
+          <div class="bouncing-blob bouncing-blob--purple"></div>
+          <div class="bouncing-blob bouncing-blob--purple"></div>
+          <div class="bouncing-blob bouncing-blob--pink"></div>
+        </div>
       </div>
-    </div>
-    <div id="loader" class="loader">Launching your social adventure...</div>
+      <div id="loader" class="loader">Launching your social adventure...</div>
 
-    <div class="container" id="appContainer" style="display: none">
-      <header class="header">
-        <h1>✨ Friend Finder ✨</h1>
-        <p class="subtitle">Click someone cute. See where it goes 💌</p>
-      </header>
+      <div class="container" id="appContainer" style="display: none">
+        <header class="header">
+          <div class="header__container container">
+            <h1>✨ Friend Finder ✨</h1>
+            <p class="subtitle">Click someone cute. See where it goes 💌</p>
+            <div class="detail-header">
+              <div class="detail-title-name">
+                <!-- <h2>${account.name}</h2> -->
+              </div>
+              <button class="back-button" id="backButton">← Back</button>
+            </div>
+          </div>
+        </header>
 
-      <section class="catalog" id="catalog"></section>
+        <section class="catalog" id="catalog"></section>
 
-      <section id="detailPage" class="detail-page">
-        <div class="detail-header">
-          <button class="back-button" id="backButton">← Back</button>
-          <h2 id="detailName">Profile Details</h2>
-        </div>
+        <section id="detailPage" class="detail-page">
+          <!-- <div class="detail-header">
+            <button class="back-button" id="backButton">← Back</button>
+            <h2 id="detailName">Profile Details</h2>
+          </div> -->
 
-        <div class="photo-slider" id="photoSlider">
-          <div id="sliderContainer"></div>
-        </div>
-        <!-- <div id="sliderDots"></div> -->
+          <div class="photo-slider" id="photoSlider">
+            <div id="sliderContainer"></div>
+          </div>
+          <!-- <div id="sliderDots"></div> -->
 
-        <div class="detail-content">
-          <h2 class="detail-title" id="detailTitle"></h2>
-          <p class="detail-age" id="detailAge"></p>
-          <p class="detail-desc" id="detailDesc"></p>
-          <a href="#" class="chat-button" id="chatButton"
-            >💬 Flirt in Telegram</a
-          >
-        </div>
-      </section>
+          <div class="detail-content">
+            <!-- <h2 class="detail-title" id="detailTitle"></h2>
+            <p class="detail-age" id="detailAge"></p>
+            <p class="detail-desc" id="detailDesc"></p> -->
+            <a href="#" class="chat-button" id="chatButton"
+              >💬 Flirt in Telegram</a
+            >
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="app.js"></script>
