@@ -14,6 +14,7 @@ body {
   background-color: #93c4cf;
   background-color: transparent;
   color: #333;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   /* padding: 16px; */
   overflow-x: hidden;
 }
@@ -111,6 +112,7 @@ body {
 }
 
 .header__container {
+  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
   display: flex;
   align-items: center;
   background-color: #bf9cd8;
@@ -129,16 +131,18 @@ body {
   border-radius: 0 0 5px 5px;
   text-align: center;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px 0;
   z-index: 8;
 }
 
 .header h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 28px;
   margin-bottom: 4px;
 }
 
 .subtitle {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 18px;
   font-weight: 500;
   color: #715555;
@@ -182,6 +186,11 @@ body {
   font-size: 22px;
   font-weight: 600;
   position: relative;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.banner-title h2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .banner-title__icon {
@@ -197,12 +206,14 @@ body {
   font-size: 14px;
   color: #eae2e2;
   margin-bottom: 4px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .banner-desc {
   font-size: 14px;
   line-height: 1.4;
   color: #444;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 /* Profile Detail */
@@ -254,6 +265,7 @@ body {
   position: absolute;
   top: 50%;
   left: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 /* .photo-slider { margin: 10px 0; } */
@@ -281,6 +293,11 @@ body {
   position: absolute;
   top: 320px;
   color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.detail-title h2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .detail-title-name {
@@ -289,6 +306,11 @@ body {
   font-weight: bold;
   margin-bottom: 4px;
   color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.detail-title-name h2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .detail-title__icon {
@@ -305,6 +327,7 @@ body {
   font-size: 18px;
   color: #715555;
   margin-bottom: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .detail-desc {
@@ -312,6 +335,7 @@ body {
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .chat-button {
@@ -329,6 +353,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background 0.2s;
   margin-bottom: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .chat-button-2 {
@@ -348,6 +373,7 @@ body {
   cursor: pointer;
   position: relative;
   transition: 0.2s ease-in-out;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .chat-button:hover {
@@ -451,6 +477,11 @@ body {
   display: block;
   text-align: center;
   margin-top: 20px;
+  span {
+    display: block;
+    margin-bottom: 2px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
   a {
     background: #ee1dba;
     width: 100%;
@@ -459,6 +490,7 @@ body {
     top: 0;
     left: 0;
     z-index: 2;
+    /* margin-bottom: 2px; */
   }
 
   .button__wrapper-2:hover .pulsing-2 {
@@ -665,12 +697,17 @@ body {
 
 .photo-grid {
   margin-bottom: 10px;
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  width: 100%;
+  /* gap: 5px; */
+}
+
+.photo-grid img {
+  border-radius: 10px;
 }
 
 .grid-photo {
@@ -678,12 +715,17 @@ body {
   /* height: auto; */
   aspect-ratio: 1;
   object-fit: contain;
-  border-radius: 5px;
+  /* border-radius: 10px; */
+  /* overflow: hidden; */
   cursor: pointer;
   transition: 0.3s;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 5px auto;
+  /* margin-right: auto; */
+}
+
+.grid-photo img {
+  width: 100%;
 }
 
 /* The Modal (background) */
@@ -762,29 +804,29 @@ body {
   }
 
   .main-detail-img {
-    height: 300px;
+    height: 350px;
   }
 
   .detail-title {
-    top: 220px;
+    top: 280px;
   }
 }
 
 @media (max-width: 992px) {
-  .detail-header {
-    padding: 5px 16px;
+  .detail-page {
+    margin-top: 80px;
   }
 
   .header__container {
-    padding: 15px;
+    /* padding: 15px; */
   }
 
   .main-detail-img {
-    height: 250px;
+    height: 300px;
   }
 
   .detail-title {
-    top: 180px;
+    top: 230px;
   }
 
   .detail-title-name {
@@ -815,20 +857,20 @@ body {
   }
 
   .main-detail-img {
-    height: 200px;
+    height: 250px;
   }
 
   .detail-title {
-    top: 140px;
+    top: 200px;
   }
 }
 
 @media (max-width: 500px) {
   .main-detail-img {
-    height: 150px;
+    height: 200px;
   }
 
   .detail-title {
-    top: 100px;
+    top: 150px;
   }
 }
