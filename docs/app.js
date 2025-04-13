@@ -124,6 +124,8 @@ const detailContent = document.querySelector(".detail-content");
 const detailHeader = document.querySelector(".detail-header");
 const detailTitleName = document.querySelector(".detail-title-name");
 const subtitle = document.querySelector(".subtitle");
+const headerContainer = document.querySelector(".header__container");
+const headerContainerTitle = headerContainer.querySelector("h1");
 
 // Current state
 let currentSlide = 0;
@@ -134,6 +136,10 @@ window.addEventListener("DOMContentLoaded", () => {
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   };
+
+  // window.addEventListener("scroll", function () {
+  //   document.getElementById("showScroll").innerHTML = pageYOffset + "px";
+  // });
   const telegramApp = window.Telegram.WebApp;
   telegramApp.ready && telegramApp.ready();
   telegramApp.expand();
@@ -184,6 +190,7 @@ window.addEventListener("DOMContentLoaded", () => {
     detailHeader.style.display = "flex";
     detailTitleName.style.display = "flex";
     subtitle.style.display = "none";
+    headerContainerTitle.style.display = "none";
 
     currentAccount = account;
 
@@ -291,6 +298,7 @@ window.addEventListener("DOMContentLoaded", () => {
     catalogElement.style.display = "grid";
     detailTitle.style.display = "none";
     subtitle.style.display = "block";
+    headerContainerTitle.style.display = "block";
     currentAccount = null;
     console.log("vbf");
   }
