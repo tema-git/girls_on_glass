@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Cormorant Garamond", serif;
   &:before,
   &:after {
     content: "";
@@ -14,9 +14,12 @@ body {
   background-color: #93c4cf;
   background-color: transparent;
   color: #333;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  padding-bottom: 30px;
   overflow-x: hidden;
+}
+
+.page {
+  flex: 1 1 auto;
+  padding-bottom: 10px;
 }
 
 .wrapper {
@@ -116,7 +119,6 @@ body {
 }
 
 .header__container {
-  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
   display: flex;
   align-items: center;
   background-color: #bf9cd8;
@@ -132,7 +134,7 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 0 0 5px 5px;
+  /* border-radius: 0 0 5px 5px; */
   text-align: center;
   margin: 0 auto;
   padding: 10px 0;
@@ -140,13 +142,11 @@ body {
 }
 
 .header h1 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 28px;
   margin-bottom: 4px;
 }
 
 .subtitle {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 18px;
   font-weight: 500;
   color: #715555;
@@ -163,7 +163,6 @@ body {
 
 .banner {
   border-radius: 16px;
-  box-shadow: 3px 3px 5px 2px rgb(176, 146, 199);
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -180,7 +179,7 @@ body {
   height: 400px;
   object-fit: cover;
   border-radius: 16px;
-  box-shadow: 3px 3px 5px 2px rgb(176, 146, 199);
+  box-shadow: 1px 1px 1px 1px rgb(176, 146, 199);
 }
 
 .banner-title {
@@ -190,11 +189,6 @@ body {
   font-size: 22px;
   font-weight: 600;
   position: relative;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-.banner-title h2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .banner-title__icon {
@@ -210,14 +204,12 @@ body {
   font-size: 14px;
   color: #eae2e2;
   margin-bottom: 4px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .banner-desc {
   font-size: 14px;
   line-height: 1.4;
   color: #444;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 /* Profile Detail */
@@ -269,7 +261,6 @@ body {
   position: absolute;
   top: 30%;
   left: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 /* .photo-slider { margin: 10px 0; } */
@@ -297,11 +288,6 @@ body {
   position: absolute;
   top: 320px;
   color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-.detail-title h2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .detail-title-name {
@@ -310,12 +296,7 @@ body {
   font-weight: bold;
   margin-bottom: 4px;
   color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   padding: 19px 0;
-}
-
-.detail-title-name h2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .detail-title__icon {
@@ -323,7 +304,7 @@ body {
   height: 21px;
   margin-left: 8px;
   position: absolute;
-  top: 50%;
+  top: calc(50% - 3px);
   left: 100%;
   transform: translateY(-20%);
 }
@@ -332,7 +313,6 @@ body {
   font-size: 18px;
   color: #715555;
   margin-bottom: 5px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .detail-desc {
@@ -340,7 +320,6 @@ body {
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .chat-button {
@@ -358,7 +337,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background 0.2s;
   margin-bottom: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .chat-button-2 {
@@ -378,7 +356,6 @@ body {
   cursor: pointer;
   position: relative;
   transition: 0.2s ease-in-out;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .chat-button:hover {
@@ -485,7 +462,6 @@ body {
   span {
     display: block;
     margin-bottom: 2px;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
   a {
     background: #ee1dba;
@@ -667,7 +643,7 @@ body {
   border: 1px solid #a947b8;
   border-radius: 50px;
   padding: 0.8rem 2rem;
-  font: 24px "Margarine", sans-serif;
+  font-size: 24px;
   outline: none;
   cursor: pointer;
   position: relative;
@@ -735,8 +711,9 @@ body {
   width: 100%;
 }
 
+/* --------------------------- modal - show photo zoom ----------------------------- */
 /* The Modal (background) */
-.modal {
+.modal-photo {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 99; /* Sit on top */
@@ -751,11 +728,11 @@ body {
 }
 
 /* Modal Content (image) */
-.modal-content {
+.modal-photo__content {
   margin: auto;
   display: block;
   width: 75%;
-  max-width: 75%;
+  /* max-width: 75%; */
 }
 
 @-webkit-keyframes zoom {
@@ -798,9 +775,407 @@ body {
   animation-duration: 0.6s;
 }
 
+/* ------------------ modal ------------------------------------------ */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal__dialog {
+  max-width: 500px;
+  margin: 40px auto;
+}
+.modal__content {
+  position: relative;
+  width: 100%;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 30px;
+  color: #000;
+  opacity: 0.5;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.modal__title {
+  text-align: center;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.modal__input,
+.modal__text {
+  display: block;
+  margin: 20px auto 20px auto;
+  width: 280px;
+  background: #ffffff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 20px;
+  outline: none;
+}
+
+.modal__input {
+  height: 50px;
+}
+
+.modal__text {
+  height: 150px;
+}
+
+.modal__label {
+  text-align: center;
+}
+
+.modal .btn {
+  display: block;
+  width: 280px;
+  margin: 0 auto;
+}
+
+.btn {
+  width: 220px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s all;
+  outline: none;
+}
+
+.btn_white {
+  background-color: #fff;
+}
+.btn_dark {
+  background-color: #303030;
+  color: #fff;
+  border: none;
+}
+.btn_min {
+  height: 50px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------- Яндекс-форма ---------------------------------- */
+
+.form-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  /* display: none; */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.form-content {
+  background-color: #fff;
+  padding: 10px;
+  width: 50%;
+  max-height: 90%;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.form-popup.show-form {
+  display: flex;
+}
+
+/* ------------------------- form-confirm age ------------------------ */
+
+.form {
+  /* max-width: 550px;
+  margin: 0 auto;
+  color: white;
+  padding: 30px 0px; */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form__dialog {
+  max-width: 500px;
+  margin: 40px auto;
+  /* text-align: center; */
+}
+
+.form__content {
+  width: 100%;
+  padding: 40px;
+  background-color: #7eafd7;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.form * {
+  outline: none;
+}
+
+.form__body {
+  position: relative;
+}
+.form__body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.9) url(./assets/icons/loading.gif) center /
+    50px no-repeat;
+  opacity: 0;
+  visibility: hidden;
+}
+.form__body._sending::after {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s ease 0s;
+}
+
+.form__tilte {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.form__item {
+  margin-bottom: 20px;
+}
+.form__label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.select {
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0px 20px;
+}
+
+.checkbox._error .checkbox__label::before {
+  box-shadow: 0 0 15px red;
+}
+.checkbox__input {
+  display: none;
+}
+
+.checkbox__input:checked + .checkbox__label::after {
+  transform: scale(1);
+}
+
+.checkbox__label {
+  font-size: 16px;
+  line-height: 140%;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  span {
+    margin-left: 30px;
+  }
+}
+
+.checkbox__label::before {
+  content: "";
+  align-self: flex-start;
+  flex: 0 0 24px;
+  height: 24px;
+  width: 24px;
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.checkbox__label::after {
+  transition: transform 0.5s ease 0s;
+  content: "";
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-color: #4f779d;
+  border-radius: 4px;
+  transform: scale(0);
+}
+
+.checkbox__label a {
+  color: #823d96;
+}
+.form__button {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* text-align: center; */
+  height: 50px;
+  background-color: #4f779d;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 1px 0 #20242d;
+  transition: #20242d 0.5s ease 0s;
+  position: relative;
+  top: 0;
+}
+
+.form__button:hover {
+  background-color: #2179cc;
+}
+
+.form__button:active {
+  top: 3px;
+  box-shadow: 0 2px 0 #2c465e;
+}
+
+/* ------------------  Footer ---------------------------------------- */
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  background: rgba(37, 43, 66, 1);
+  padding: 30px 0px;
+  color: white;
+}
+
+.footer__title {
+  font-size: 18px;
+}
+
+.footer__items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer__item:not(:last-child) {
+  margin-top: 3px;
+}
+
+.footer__item {
+  max-width: 30px;
+}
+
+.footer__item {
+  max-width: 30px;
+}
+
+.footer__telegram:hover path {
+  fill: rgb(185, 110, 219);
+}
+
+.footer__instagram:hover g {
+  stroke: rgb(185, 110, 219);
+}
+
+.footer__email {
+  fill: white;
+}
+
+.footer__email:hover {
+  fill: rgb(185, 110, 219);
+}
+
+.footer__connect {
+  text-align: center;
+}
+
+.footer__button {
+  border: 1px solid white;
+  color: rgb(54, 38, 58);
+  border-radius: 25px;
+  line-height: 142%;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 20px;
+  transition: all 0.3s ease 0s;
+  margin: 10px auto 0 auto;
+}
+.footer__button:hover {
+  /* background-color: #ff7b47; */
+  /* color: white; */
+  color: rgb(244, 240, 245);
+  background-color: rgb(72, 7, 102);
+  border: 1px solid white;
+}
+
+/* ------------------  media ----------------------------------------- */
+
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px) {
-  .modal-content {
+  .modal-photo__content {
     width: 100%;
   }
 }
@@ -821,7 +1196,7 @@ body {
 
 @media (max-width: 992px) {
   .detail-page {
-    margin-top: 80px;
+    margin-top: 63px;
   }
 
   .header__container {
@@ -873,7 +1248,13 @@ body {
   }
 
   .detail-title-name {
-    padding: 8px 0;
+    padding: 3px 0;
+    margin-bottom: 0;
+  }
+
+  .form-content {
+    width: 90%;
+    padding: 5px;
   }
 }
 
@@ -884,5 +1265,24 @@ body {
 
   .detail-title {
     top: 150px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer__title {
+    text-align: center;
+  }
+
+  .footer__items {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .footer__button {
+    margin: 10px auto 0 auto;
+
+    /* max-width: 120px; */
   }
 }

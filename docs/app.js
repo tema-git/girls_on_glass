@@ -126,6 +126,8 @@ const detailTitleName = document.querySelector(".detail-title-name");
 const subtitle = document.querySelector(".subtitle");
 const headerContainer = document.querySelector(".header__container");
 const headerContainerTitle = headerContainer.querySelector("h1");
+const modal = document.querySelector(".modal");
+const formConfirmWrapper = document.querySelector(".form");
 
 // Current state
 let currentSlide = 0;
@@ -137,6 +139,22 @@ window.addEventListener("DOMContentLoaded", () => {
     window.scrollTo(0, 0);
   };
 
+  const startTime = localStorage.getItem("startTime");
+  const endTime = Date.now();
+  const difference = endTime - startTime;
+
+  console.log(endTime);
+  console.log(startTime);
+  console.log(difference);
+
+  if (!localStorage.getItem("isChecked")) {
+    console.log("block");
+    formConfirmWrapper.style.display = "block";
+  } else if (localStorage.getItem("startTime") && difference > 86400000) {
+    formConfirmWrapper.style.display = "block";
+    localStorage.removeItem("isChecked");
+    localStorage.removeItem("startTime");
+  }
   // window.addEventListener("scroll", function () {
   //   document.getElementById("showScroll").innerHTML = pageYOffset + "px";
   // });
@@ -235,8 +253,8 @@ window.addEventListener("DOMContentLoaded", () => {
                     `
                   )
                   .join("")}
-                  <div id = "myModal" class = "modal" >  
-                    <img class = "modal-content" id = "img01" >                  
+                  <div id = "myModal" class = "modal-photo" >  
+                    <img class = "modal-photo__content" id = "img01" >                  
                   </div>
             </div>
         </div>
@@ -255,10 +273,10 @@ window.addEventListener("DOMContentLoaded", () => {
             </div>
     `;
 
-    //--------------------------------------------------------
+    //----------- modal-photo ---------------------------------------------
 
     // Get the modal
-    const modal = document.querySelector("#myModal");
+    const modalPhoto = document.querySelector("#myModal");
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
     const imagesPersonalList = document.querySelectorAll(".grid-photo");
@@ -267,18 +285,18 @@ window.addEventListener("DOMContentLoaded", () => {
     imagesPersonalList.forEach((item) => {
       item.addEventListener("click", () => {
         console.log(item.firstElementChild);
-        modal.style.display = "block";
+        modalPhoto.style.display = "block";
         modalImg.src = item.firstElementChild.src;
         modalImg.alt = item.firstElementChild.alt;
       });
     });
 
-    modal.addEventListener("click", (event) => {
+    modalPhoto.addEventListener("click", (event) => {
       console.log(event.target.className);
       modalImg.className += " out";
       setTimeout(function () {
-        modal.style.display = "none";
-        modalImg.className = "modal-content";
+        modalPhoto.style.display = "none";
+        modalImg.className = "modal-photo__content";
       }, 400);
     });
 
@@ -303,7 +321,243 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log("vbf");
   }
 
-  // Go to specific slide
+  //-------------- modal-form --------------------------------------
+
+  const modalTrigger = document.querySelectorAll("[data-modal]");
+  // const modalCloseBtn = document.querySelector("[data-close]");
+
+  function closeModal() {
+    modal.classList.add("hide");
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  function openModal() {
+    modal.classList.add("show");
+    modal.classList.remove("hide");
+    document.body.style.overflow = "hidden";
+  }
+
+  modalTrigger.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openModal();
+    });
+  });
+
+  // modalCloseBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (event) => {
+    if (
+      event.target === modal ||
+      event.target.getAttribute("data-close") == ""
+    ) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Escape" && modal.classList.contains("show")) {
+      closeModal();
+    }
+  });
+
+  //------------------------ form - отправка (моя) не нужна  ---------------------------------------
+
+  const formContact = document.querySelector(".modal__form");
+
+  const message = {
+    loading: "./assets/icons/spinner.svg",
+    success: "Спасибо! Скоро мы свяжемся с вами!",
+    failure: "Что-то пошло не так...",
+  };
+
+  // forms.forEach((item) => {
+  //   bindPostData(item);
+  // });
+
+  bindPostData(formContact);
+
+  const postData = async (url, data) => {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: data,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+    }
+
+    return await res.json();
+  };
+
+  const postFormData = async (url, data) => {
+    // для данный в формате FormData
+    const res = await fetch(url, {
+      method: "POST",
+      body: data,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+    }
+
+    return await res.json();
+  };
+
+  function bindPostData(form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const statusMessage = document.createElement("img");
+      statusMessage.src = message.loading;
+      statusMessage.textContent = message.loading;
+      statusMessage.style.cssText = `
+        display: block;
+        margin: 0 auto;
+      `;
+      form.append(statusMessage);
+
+      const formData = new FormData(form);
+
+      // если надо отправить данные в формате FormData:
+
+      postFormData("server.php", formData)
+        .then((data) => data.text())
+        .then((data) => {
+          console.log(data);
+          showThanksModal(message.success);
+          statusMessage.remove();
+        })
+        .catch(() => {
+          showThanksModal(message.failure);
+        })
+        .finally(() => {
+          form.reset();
+        });
+
+      // если надо отправить данные в формате JSON:
+
+      const json = JSON.stringify(Object.fromEntries(formData.entries()));
+
+      // postData("server.php", json)
+      //   .then((data) => {
+      //     console.log(data);
+      //     showThanksModal(message.success);
+      //     statusMessage.remove();
+      //   })
+      //   .catch(() => {
+      //     showThanksModal(message.failure);
+      //   })
+      //   .finally(() => {
+      //     form.reset();
+      // });
+    });
+  }
+
+  function showThanksModal(message) {
+    const prevModalDialog = document.querySelector(".modal__dialog");
+
+    prevModalDialog.classList.add("hide");
+    openModal();
+
+    const thanksModal = document.createElement("div");
+    thanksModal.classList.add("modal__dialog");
+    thanksModal.innerHTML = `
+       <div class="modal__content">
+          <div data-close class="modal__close">&times;</div>
+          <div class="modal__title">${message}</div>
+       </div>
+    `;
+
+    document.querySelector(".modal").append(thanksModal);
+    setTimeout(() => {
+      thanksModal.remove();
+      prevModalDialog.classList.add("show");
+      prevModalDialog.classList.remove("hide");
+      closeModal();
+    }, 4000);
+  }
+
+  //----------------------------- Яндекс-форма ----------------------------------------
+
+  const openFormBtn = document.querySelector("#open-form-btn");
+  const formPopup = document.querySelector("#form-popup");
+
+  openFormBtn.addEventListener("click", function () {
+    formPopup.classList.add("show-form");
+    formPopup.classList.remove("hide");
+    document.body.style.overflow = "hidden";
+  });
+
+  formPopup.addEventListener("click", (event) => {
+    if (event.target === formPopup) {
+      formPopup.classList.add("hide");
+      formPopup.classList.remove("show-form");
+      document.body.style.overflow = "";
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Escape" && formPopup.classList.contains("show-form")) {
+      formPopup.classList.add("hide");
+      formPopup.classList.remove("show-form");
+      document.body.style.overflow = "";
+    }
+  });
+
+  //------------------------------- форма - подьверждение возраста ------------------------------------
+
+  const formConfirm = document.querySelector(".form__body");
+
+  formConfirm.addEventListener("submit", formSend);
+
+  function formSend(e) {
+    e.preventDefault();
+
+    let error = formValidate(formConfirm);
+
+    if (error === 0) {
+      formConfirm.reset();
+      localStorage.setItem("isChecked", true);
+      localStorage.setItem("startTime", Date.now());
+      formConfirmWrapper.style.display = "none";
+    } else {
+      alert("Заполните обязательные поля!");
+    }
+  }
+
+  function formValidate(form) {
+    let error = 0;
+    let formReq = document.querySelectorAll("._req");
+
+    for (let index = 0; index < formReq.length; index++) {
+      const input = formReq[index];
+      formRemoveError(input);
+      if (
+        input.getAttribute("type") === "checkbox" &&
+        input.checked === false
+      ) {
+        formAddError(input);
+        error++;
+      }
+    }
+    return error;
+  }
+
+  function formAddError(input) {
+    input.parentElement.classList.add("_error");
+    input.classList.add("_error");
+  }
+  function formRemoveError(input) {
+    input.parentElement.classList.remove("_error");
+    input.classList.remove("_error");
+  }
+
+  //------------------------ Go to specific slide --------------------------------------
+
   function goToSlide(index) {
     if (isSliding || !currentAccount) return;
 

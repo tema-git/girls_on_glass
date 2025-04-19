@@ -5,65 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Friend Finder</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Golos+Text:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <div class="bouncing-blobs-container">
-        <div class="bouncing-blobs-glass"></div>
-        <div class="bouncing-blobs">
-          <div class="bouncing-blob bouncing-blob--blue"></div>
-          <div class="bouncing-blob bouncing-blob--blue"></div>
-          <div class="bouncing-blob bouncing-blob--blue"></div>
-          <div class="bouncing-blob bouncing-blob--white"></div>
-          <div class="bouncing-blob bouncing-blob--purple"></div>
-          <div class="bouncing-blob bouncing-blob--purple"></div>
-          <div class="bouncing-blob bouncing-blob--pink"></div>
+    <main class="page">
+      <div class="wrapper">
+        <div class="bouncing-blobs-container">
+          <div class="bouncing-blobs-glass"></div>
+          <div class="bouncing-blobs">
+            <div class="bouncing-blob bouncing-blob--blue"></div>
+            <div class="bouncing-blob bouncing-blob--blue"></div>
+            <div class="bouncing-blob bouncing-blob--blue"></div>
+            <div class="bouncing-blob bouncing-blob--white"></div>
+            <div class="bouncing-blob bouncing-blob--purple"></div>
+            <div class="bouncing-blob bouncing-blob--purple"></div>
+            <div class="bouncing-blob bouncing-blob--pink"></div>
+          </div>
+        </div>
+        <div id="loader" class="loader">Launching your social adventure...</div>
+
+        <div class="container" id="appContainer" style="display: none">
+          <header class="header">
+            <div class="header__container container">
+              <h1>✨ Friend Finder ✨</h1>
+              <p class="subtitle">Click someone cute. See where it goes 💌</p>
+              <div class="detail-header">
+                <div class="detail-title-name"></div>
+                <button class="back-button" id="backButton">← Back</button>
+              </div>
+            </div>
+          </header>
+
+          <section class="catalog" id="catalog"></section>
+
+          <section id="detailPage" class="detail-page">
+            <div class="photo-slider" id="photoSlider">
+              <div id="sliderContainer"></div>
+            </div>
+            <div class="detail-content">
+              <a href="#" class="chat-button" id="chatButton"
+                >💬 Flirt in Telegram</a
+              >
+            </div>
+          </section>
         </div>
       </div>
-      <div id="loader" class="loader">Launching your social adventure...</div>
 
-      <div class="container" id="appContainer" style="display: none">
-        <header class="header">
-          <!-- <div class="header__container-top"></div> -->
-          <div class="header__container container">
-            <h1>✨ Friend Finder ✨</h1>
-            <p class="subtitle">Click someone cute. See where it goes 💌</p>
-            <div class="detail-header">
-              <div class="detail-title-name">
-                <!-- <h2>${account.name}</h2> -->
+      <div class="form">
+        <div class="form__dialog">
+          <div class="form__content">
+            <form action="#" id="form" class="form__body">
+              <h6 class="form__tilte">Подтвердите ваш возраст:</h6>
+              <div class="form__item">
+                <div class="checkbox">
+                  <input
+                    id="formConfirm"
+                    type="checkbox"
+                    name="confirm"
+                    class="checkbox__input _req"
+                  />
+                  <label class="checkbox__label" for="formConfirm"
+                    ><span> Мне есть 18 лет</span></label
+                  >
+                </div>
               </div>
-              <button class="back-button" id="backButton">← Back</button>
-            </div>
+              <div class="form__item">
+                <div class="checkbox">
+                  <input
+                    id="formAgreement"
+                    type="checkbox"
+                    name="agreement"
+                    class="checkbox__input _req"
+                  />
+                  <label class="checkbox__label" for="formAgreement"
+                    ><span>
+                      Я согласен с
+                      <a href="./polici.html">
+                        политикой <br />
+                        конфиденциальности</a
+                      >*</span
+                    ></label
+                  >
+                </div>
+              </div>
+              <button class="form__button" type="submit">Отправить</button>
+            </form>
           </div>
-          <!-- <div class="header__container-bottom"></div> -->
-        </header>
-
-        <section class="catalog" id="catalog"></section>
-
-        <section id="detailPage" class="detail-page">
-          <!-- <div class="detail-header">
-            <button class="back-button" id="backButton">← Back</button>
-            <h2 id="detailName">Profile Details</h2>
-          </div> -->
-
-          <div class="photo-slider" id="photoSlider">
-            <div id="sliderContainer"></div>
-          </div>
-          <!-- <div id="sliderDots"></div> -->
-
-          <div class="detail-content">
-            <!-- <h2 class="detail-title" id="detailTitle"></h2>
-            <p class="detail-age" id="detailAge"></p>
-            <p class="detail-desc" id="detailDesc"></p> -->
-            <a href="#" class="chat-button" id="chatButton"
-              >💬 Flirt in Telegram</a
-            >
-          </div>
-        </section>
+        </div>
       </div>
-    </div>
+      <div class="modal">
+        <div class="modal__dialog">
+          <div class="modal__content">
+            <form class="modal__form" action="#">
+              <div data-close class="modal__close">&times;</div>
+              <div class="modal__title">
+                Мы свяжемся с вами как можно быстрее!
+              </div>
+              <input
+                required
+                placeholder="Enter your name"
+                name="name"
+                type="text"
+                class="modal__input"
+              />
+              <input
+                required
+                placeholder="Enter your email"
+                name="email"
+                type="email"
+                class="modal__input"
+              />
+              <label class="modal__label" for="comments">Comments:</label>
+              <textarea
+                id="comments"
+                name="comments"
+                rows="4"
+                cols="50"
+                class="modal__text"
+                placeholder="Enter your comments here..."
+              ></textarea>
 
+              <button class="btn btn_dark btn_min">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="offer__action">
+        <button data-modal class="btn btn_dark">Contact us</button>
+      </div> -->
+      <div id="form-popup" class="form-popup hide">
+        <div class="form-content">
+          <iframe
+            src="https://forms.yandex.ru/u/67fd1a18eb6146ad05aa1a2f/?iframe=1&theme=light-hc"
+            frameborder="0"
+            name="ya-form-67fd1a18eb6146ad05aa1a2f"
+            width="100%"
+          >
+          </iframe>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__follow">
+        <h2 class="footer__title">Мы в соцсетях</h2>
+        <div class="footer__items">
+          <div class="footer__item">
+            <a class="footer__link" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                class="footer__telegram"
+              >
+                <path
+                  fill="white"
+                  d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0m-8 10c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.358-12.618q-1.458.607-5.831 2.513q-.711.282-.744.552c-.038.304.343.424.862.587l.218.07c.51.166 1.198.36 1.555.368q.486.01 1.084-.4q4.086-2.76 4.218-2.789c.063-.014.149-.032.207.02c.059.052.053.15.047.177c-.038.161-1.534 1.552-2.308 2.271q-.344.324-.683.653c-.474.457-.83.8.02 1.36c.861.568 1.73 1.134 2.57 1.733c.414.296.786.56 1.246.519c.267-.025.543-.276.683-1.026c.332-1.77.983-5.608 1.133-7.19a1.8 1.8 0 0 0-.017-.393a.42.42 0 0 0-.142-.27c-.12-.098-.305-.118-.387-.117c-.376.007-.953.207-3.73 1.362"
+                />
+              </svg>
+              <!-- <img
+                src="./assets/icons/телеграм-white.svg"
+                alt="telegram-icon"
+              /> -->
+            </a>
+          </div>
+          <div class="footer__item">
+            <a class="footer__link" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="footer__instagram"
+              >
+                <g
+                  fill="none"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8A4 4 0 0 1 16 11.37m1.5-4.87h.01"
+                  />
+                </g>
+              </svg>
+              <!-- <img
+                src="./assets/icons/instagram-white.svg"
+                alt="instagram-icon"
+            /> -->
+            </a>
+          </div>
+          <div class="footer__item">
+            <a class="footer__link" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="footer__email"
+                width="28"
+                height="28"
+                viewBox="0 0 22 22"
+              >
+                <path
+                  d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-2 0l-8 5l-8-5zm0 12H4V8l8 5l8-5z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__connect">
+        <!-- <h2 class="footer__title">Свяжитесь с нами:</h2> -->
+        <button class="footer__button" id="open-form-btn">
+          Свяжитесь с нами
+        </button>
+      </div>
+    </footer>
+
+    <script src="https://forms.yandex.ru/_static/embed.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
