@@ -128,6 +128,7 @@ const headerContainer = document.querySelector(".header__container");
 const headerContainerTitle = headerContainer.querySelector("h1");
 const modal = document.querySelector(".modal");
 const formConfirmWrapper = document.querySelector(".form");
+//    <img src="./assets/icons/pink.png" alt="icon" class="banner-title__icon">
 
 // Current state
 let currentSlide = 0;
@@ -177,8 +178,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 <img src="${account.photos[0]}" alt="${account.name}" class="banner-img">
                 <div class="banner-overlay">
                           <div class="banner-title">
-                               <h2>${account.name}</h2>
-                               <img src="./assets/icons/pink.png" alt="icon" class="banner-title__icon">
+                               <h2>${account.name}</h2>                            
                            </div>             
                     <p class="banner-age">@${account.username}</p>
                 </div>  
@@ -226,7 +226,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }" class="main-detail-img">
             <div class="detail-title">
                 <h2>${account.name}</h2>
-                <img src="./assets/icons/pink.png" alt="icon" class="detail-title__icon">
+               
             </div>
                 
             <p class="detail-age">${account.age} years old</p>
@@ -275,12 +275,83 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //----------- modal-photo ---------------------------------------------
 
-    // Get the modal
     const modalPhoto = document.querySelector("#myModal");
+    const modalImg = document.querySelector("#img01");
+
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+
+    // Порог, сколько нужно тянуть для закрытия (например, 100px)
+    const threshold = 100;
+
+    modalPhoto.addEventListener(
+      "touchstart",
+      (e) => {
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        modalImg.style.transition = "none"; // Отключаем анимацию во время перетаскивания
+      },
+      false
+    );
+
+    modalPhoto.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!isDragging) return;
+
+        currentY = e.touches[0].clientY;
+        const deltaY = currentY - startY;
+
+        // Двигаем картинку вертикально
+        modalImg.style.transform = `translateY(${deltaY}px)`;
+      },
+      false
+    );
+
+    modalPhoto.addEventListener(
+      "touchend",
+      () => {
+        if (!isDragging) return;
+
+        isDragging = false;
+        const deltaY = currentY - startY;
+
+        // Если пользователь тянул достаточно сильно — закрываем
+        if (Math.abs(deltaY) > threshold) {
+          modalImg.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+          modalImg.style.transform = `translateY(${
+            deltaY > 0 ? "100%" : "-100%"
+          })`;
+          modalImg.style.opacity = 0;
+
+          setTimeout(() => {
+            modalPhoto.style.display = "none";
+            modalImg.style.transition = "none";
+            modalImg.style.transform = "translateY(0)";
+            modalImg.style.opacity = 1;
+
+            // ВОССТАНОВЛЕНИЕ СКРОЛЛА
+            document.body.style.overflow = "";
+          }, 300);
+        } else {
+          // Иначе плавно возвращаем картинку назад
+          modalImg.style.transition = "transform 0.3s ease";
+          modalImg.style.transform = "translateY(0)";
+          // ВОССТАНОВЛЕНИЕ СКРОЛЛА
+          document.body.style.overflow = "";
+        }
+      },
+      false
+    );
+
+    //------------------------------------------------------------------------------
+    // Get the modal
+    // const modalPhoto = document.querySelector("#myModal");
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
     const imagesPersonalList = document.querySelectorAll(".grid-photo");
-    const modalImg = document.querySelector("#img01");
+    // const modalImg = document.querySelector("#img01");
 
     imagesPersonalList.forEach((item) => {
       item.addEventListener("click", () => {
@@ -288,16 +359,18 @@ window.addEventListener("DOMContentLoaded", () => {
         modalPhoto.style.display = "block";
         modalImg.src = item.firstElementChild.src;
         modalImg.alt = item.firstElementChild.alt;
+        document.body.style.overflow = "hidden";
       });
     });
 
     modalPhoto.addEventListener("click", (event) => {
       console.log(event.target.className);
-      modalImg.className += " out";
+      // modalImg.className += " out";
+      document.body.style.overflow = "";
       setTimeout(function () {
         modalPhoto.style.display = "none";
         modalImg.className = "modal-photo__content";
-      }, 400);
+      }, 100);
     });
 
     //-----------------------------------------------------------------------------------
