@@ -9,7 +9,7 @@ telegramApp.expand();
 const accounts = [
   {
     id: 1,
-    name: "Kendall",
+    name: "Kendall 🇺🇸",
     age: 22,
     description: "Let’s go on an adventure – or just coffee ☕️",
     photos: [
@@ -25,8 +25,8 @@ const accounts = [
   },
   {
     id: 2,
-    name: "Sophia",
-    age: 20,
+    name: "Sophia 🇷🇺",
+    age: 21,
     description: "Brains, books, and bad jokes 📚",
     photos: [
       "./assets/photos/model2/2025-03-29 12.20.06.jpg",
@@ -41,7 +41,7 @@ const accounts = [
   },
   {
     id: 3,
-    name: "Tatiana",
+    name: "Tatiana 🇦🇪",
     age: 19,
     description: "If food is involved, I’m in 🍜",
     photos: [
@@ -58,7 +58,7 @@ const accounts = [
   },
   {
     id: 4,
-    name: "Emma",
+    name: "Emma 🇫🇷",
     age: 21,
     description: "Wanna stretch and chill? Yoga & memes 🧘‍♀️",
     photos: [
@@ -74,7 +74,7 @@ const accounts = [
   },
   {
     id: 5,
-    name: "Lisa",
+    name: "Lisa 🇷🇺",
     age: 23,
     description: "Sarcasm fluent. Fluent in other things too 😏",
     photos: [
@@ -90,7 +90,7 @@ const accounts = [
   },
   {
     id: 6,
-    name: "Sabina",
+    name: "Sabina 🇦🇪",
     age: 21,
     description: "Cute chaos and contagious giggles 💥",
     photos: [
