@@ -581,7 +581,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //------------------------------- форма - подьверждение возраста ------------------------------------
+  //------------------------------- форма - подтверждение возраста ------------------------------------
 
   const formConfirm = document.querySelector(".form__body");
 
@@ -598,7 +598,7 @@ window.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("startTime", Date.now());
       formConfirmWrapper.style.display = "none";
     } else {
-      alert("Заполните обязательные поля!");
+      alert("Confirm you are old enough!");
     }
   }
 
